@@ -2,7 +2,7 @@ import React from 'react';
 
 const ServiceDetailsPage = ({ params }) => {
 
-    const Id = params.id;
+    const Id = params?.id;
     console.log(params.id)
     const data = [
         {
