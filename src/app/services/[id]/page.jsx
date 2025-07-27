@@ -29,7 +29,7 @@ const ServiceDetailsPage = ({ params }) => {
 
     const singleData = data.find((d) => d.id == Id)
 
-    console.log(singleData)
+    // console.log(singleData)
     if (singleData) {
         return (
             <div>
