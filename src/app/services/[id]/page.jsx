@@ -30,15 +30,23 @@ const ServiceDetailsPage = ({ params }) => {
     const singleData = data.find((d) => d.id == Id)
 
     console.log(singleData)
-
-    return (
-        <div>
-            hello
-            id:{Id}
-            <h1>{singleData.servicesName}</h1>
-            <p>{singleData.servicesDetails}</p>
+    if (singleData) {
+        return (
+            <div>
+                hello
+                id:{Id}
+                <h1>{singleData.servicesName}</h1>
+                <p>{singleData.servicesDetails}</p>
+            </div>
+        );
+    }
+    else{
+        return <div>
+            Page not found 
         </div>
-    );
+    }
+
+
 };
 
 export default ServiceDetailsPage;
