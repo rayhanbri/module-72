@@ -6,6 +6,11 @@ import { NextResponse } from 'next/server'
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
     // services er path gulare detect  korte hobe
+    const currentCookies =request.cookies.get('nextjs.token')
+    console.log(currentCookies)
+    //  if (currentCookies) {
+    //     return new NextResponse('cookie akhaba ');
+    // }
 
     const userData = {
         role: 'admin',
@@ -28,7 +33,7 @@ export function middleware(request) {
     return NextResponse.next();
 }
 
-export const config = {
-  matcher: '/about/:path*',
-}
+// export const config = {
+//   matcher: '/about/:path*',
+// }
 
