@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const getPosts = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
@@ -5,9 +7,9 @@ export const getPosts = async () => {
 }
 
 const Post = async () => {
-    // component must be on sync 
+    // component must be on async 
     const posts = await getPosts();
-    console.log(posts)
+    // console.log(posts)
     return (
         <div className="space-y-8">
             {/* <p>{JSON.stringify(posts)}</p>
@@ -16,6 +18,7 @@ const Post = async () => {
             posts.map((post) =><div key={post.id}>
                 <strong>{post.title}</strong>
                 <p>{post.body}</p>
+                <Link href={`/post/${post.id}`}><button className="btn bg-amber-800 rounded-3xl">Details</button></Link>
             </div>)
         }
         </div>
