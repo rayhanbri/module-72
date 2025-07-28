@@ -1,15 +1,15 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import MealSearch from '../Components/MealSearch';
 
-const MealsPage =  () => {
-    const [meals, setMeals] = useState([]);
-    const [search, setSearch] = useState('');
+const MealsPage =async({searchParams}) => {
 
+    const query = await searchParams;
+    
     const fetchMeal = async () => {
         try {
-            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query.search}`)
             const data = await res.json();
-            setMeals(data?.meals || []);
+            // setMeals(data?.meals || []);
             return data.meals;
         }
         catch(error){
@@ -18,17 +18,11 @@ const MealsPage =  () => {
         }
     }
 
-    useEffect(()=>{
-        fetchMeal()
-
-    },[search])
-    // console.log(meals);
-
+    
+ const meals = await fetchMeal();
     return (
        <div>
-        <div className='text-center'>
-            <input  placeholder='search' value={search} onChange={(e)=>setSearch(e.target.value)} />
-        </div>
+        <MealSearch></MealSearch>
          <div className='grid grid-cols-4 gap-4'>
             {
                 meals?.map((meal)=><div key={meal.idMeal}>
