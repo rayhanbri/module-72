@@ -6,8 +6,10 @@ import { NextResponse } from 'next/server'
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
     // services er path gulare detect  korte hobe
+
+    // browser e giye jhor khore cookies add  kore dichi 
     const currentCookies =request.cookies.get('nextjs.token')
-    console.log(currentCookies)
+    // console.log(currentCookies)
     //  if (currentCookies) {
     //     return new NextResponse('cookie akhaba ');
     // }
