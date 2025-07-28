@@ -1,5 +1,6 @@
 import React from 'react';
 import MealSearch from '../Components/MealSearch';
+import style  from '../post/post.module.css'
 
 const MealsPage =async({searchParams}) => {
 
@@ -26,7 +27,8 @@ const MealsPage =async({searchParams}) => {
          <div className='grid grid-cols-4 gap-4'>
             {
                 meals?.map((meal)=><div key={meal.idMeal}>
-                    <h1 className='text-2xl font-bold'>{meal.strMeal}</h1>
+                    <h1 className={`text-2xl font-bold ${style['post-title']}`}>{meal.strMeal}</h1>
+                    {/* jeheto  amra - use kore felchi tai evahe access korchi naile . diyeo use kora jeto  */}
                     <p>{meal.strInstructions}</p>
 
 
