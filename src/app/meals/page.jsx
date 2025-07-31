@@ -30,13 +30,13 @@ const MealsPage = async ({ searchParams }) => {
         }
     }
 
-
+  
     const meals = await fetchMeal();
     console.log(meals)
     return (
         <div>
             <MealSearch></MealSearch>
-            <div className='grid grid-cols-4 gap-4'>
+            <div className='grid grid-cols-6 gap-4'>
                 {
                     meals?.map((meal) => <div key={meal.idMeal} className={roboto.className}>
                         {/* html imag  tag load all the image in api  */}
