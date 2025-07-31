@@ -6,6 +6,12 @@ const getSinglePost = async (id) => {
     return data;
 }
 
+export const metadata = {
+  title: "All Post | Learning Next.js",
+  description: "getting all post by fetching",
+};
+
+
 const SinglePost = async ({ params }) => {
     const p = await params;
     const id = p.id;
