@@ -1,6 +1,7 @@
 import React from 'react';
 import MealSearch from '../Components/MealSearch';
 import style from '../post/post.module.css'
+import Link from 'next/link';
 
 export const metadata = {
     title: "All Meals",
@@ -33,8 +34,7 @@ const MealsPage = async ({ searchParams }) => {
                         <h1 className={`text-2xl font-bold ${style['post-title']}`}>{meal.strMeal}</h1>
                         {/* jeheto  amra - use kore felchi tai evahe access korchi naile . diyeo use kora jeto  */}
                         <p>{meal.strInstructions}</p>
-
-
+                        <Link href={`/meals/${meal.idMeal}`}>Details</Link>
                     </div>)
                 }
             </div>

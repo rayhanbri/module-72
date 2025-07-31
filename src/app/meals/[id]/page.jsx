@@ -1,11 +1,4 @@
 import React from 'react';
-import MealSearch from '../Components/MealSearch';
-import style from '../post/post.module.css'
-
-export const metadata = {
-    title: "All Meals",
-    description: "meals loaded from meal api",
-};
 const fetchSingleMeal = async (id) => {
     try {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
@@ -20,23 +13,35 @@ const fetchSingleMeal = async (id) => {
 }
 
 
-const SingMealPage = async ({params}) => {
-    const {id} = await params;
+export async function generateMetadata({ params }) {
+    //search params are parent dele kore dilam lagbhe an tai 
+    // generate metadata doc theke asche eigula .
+    // read route params
+    const id  = await params.id;
+
+    // fetch data
+    //ekhane  amader je function oitare call kore dhibho 
+    const [singleMeal] = await fetchSingleMeal(id);
+
+    console.log(singleMeal)
+
+    // previousImage apatoto amder lagbe na 
+
+    return {
+        title: singleMeal.strMeal,
+        // open graph o amader apatoto lagtche na
+        description:singleMeal.strInstructions
+    }
+}
+
+
+const SingMealPage = async ({ params }) => {
+    const id = await params.id;
     const meals = await fetchSingleMeal(id);
+    // console.log(meals)
     return (
         <div>
-            <MealSearch></MealSearch>
-            <div className='grid grid-cols-4 gap-4'>
-                {
-                    meals?.map((meal) => <div key={meal.idMeal}>
-                        <h1 className={`text-2xl font-bold ${style['post-title']}`}>{meal.strMeal}</h1>
-                        {/* jeheto  amra - use kore felchi tai evahe access korchi naile . diyeo use kora jeto  */}
-                        <p>{meal.strInstructions}</p>
-
-
-                    </div>)
-                }
-            </div>
+            hello
         </div>
     );
 };
