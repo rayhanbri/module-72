@@ -2,6 +2,7 @@ import React from 'react';
 import MealSearch from '../Components/MealSearch';
 import style from '../post/post.module.css'
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
     title: "All Meals",
@@ -25,12 +26,17 @@ const MealsPage = async ({ searchParams }) => {
 
 
     const meals = await fetchMeal();
+    console.log(meals)
     return (
         <div>
             <MealSearch></MealSearch>
             <div className='grid grid-cols-4 gap-4'>
                 {
                     meals?.map((meal) => <div key={meal.idMeal}>
+                        {/* html imag  tag load all the image in api  */}
+                        {/* <img src={meal.strMealThumb} alt={meal.strMeal} /> */}
+                        {/* image use koarar  jonno  next config set  korte hobe  */}
+                        <Image src={meal?.strMealThumb || '/default-image.jpg'} width={641} height={641} alt={meal?.strMeal}></Image>
                         <h1 className={`text-2xl font-bold ${style['post-title']}`}>{meal.strMeal}</h1>
                         {/* jeheto  amra - use kore felchi tai evahe access korchi naile . diyeo use kora jeto  */}
                         <p>{meal.strInstructions}</p>
