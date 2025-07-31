@@ -3,6 +3,12 @@ import MealSearch from '../Components/MealSearch';
 import style from '../post/post.module.css'
 import Link from 'next/link';
 import Image from 'next/image';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight : ['400'],
+   subsets: ["latin"],
+})
 
 export const metadata = {
     title: "All Meals",
@@ -32,7 +38,7 @@ const MealsPage = async ({ searchParams }) => {
             <MealSearch></MealSearch>
             <div className='grid grid-cols-4 gap-4'>
                 {
-                    meals?.map((meal) => <div key={meal.idMeal}>
+                    meals?.map((meal) => <div key={meal.idMeal} className={roboto.className}>
                         {/* html imag  tag load all the image in api  */}
                         {/* <img src={meal.strMealThumb} alt={meal.strMeal} /> */}
                         {/* image use koarar  jonno  next config set  korte hobe  */}
