@@ -1,10 +1,10 @@
+import { dbConnect } from "@/lib/dbConnect";
+
 export async function GET() {
     // bowser api/items marle eita dhekacce 
-    const data = {
-        message: "api is succesfull",
-        error: false,
-        status: 200
-    }
+
+    // give your database name to the function 
+    const data = await dbConnect('test_data').find().toArray();
     return Response.json({ data })
 }
 

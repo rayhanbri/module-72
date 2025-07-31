@@ -1,7 +1,7 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion } from "mongodb";
 // ekhane const kaj kore na ei jonno import 
 
-function dbConnect(collectionName) {
+export function dbConnect(collectionName) {
     const uri = process.env.MONGO_URI;
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     const client = new MongoClient(uri, {
