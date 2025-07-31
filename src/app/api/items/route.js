@@ -10,6 +10,16 @@ export async function GET() {
 
 export async function POST(req) {
     // bowser api/items marle eita dhekacce 
+     
+    const item = {
+    name: "Running Shoes",
+    price: 59.99,
+    category: "Sports",
+    inStock: true,
+    tags: ["run", "fitness", "shoes"],
+    createdAt: new Date()
+  };
     const postedData =await req.json();
+    const result=await dbConnect('test_data').insertOne(item)
     return Response.json({ postedData })
 }
