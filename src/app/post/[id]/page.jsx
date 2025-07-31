@@ -6,6 +6,25 @@ const getSinglePost = async (id) => {
     return data;
 }
 
+export async function generateMetadata({ params }) {
+    //search params are parent dele kore dilam lagbhe an tai 
+    // generate metadata doc theke asche eigula .
+    // read route params
+    const { id } = await params
+
+    // fetch data
+    //ekhane  amader je function oitare call kore dhibho 
+    const singlePost = await getSinglePost(id);
+
+    // previousImage apatoto amder lagbe na 
+
+    return {
+        title: singlePost.title,
+        // open graph o amader apatoto lagtche na
+        description : singlePost.body 
+    }
+}
+
 
 
 const SinglePost = async ({ params }) => {
