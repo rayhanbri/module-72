@@ -9,7 +9,7 @@ export async function GET(req,{params}) {
     // console.log('hiiii',req)
 
     const p = await params.id;
-    console.log( 'heelooo',p)
+    // console.log( 'heelooo',p)
     const singleData= await dbConnect('test_data').findOne({_id : new ObjectId(p)});
     return Response.json({singleData})
 }
