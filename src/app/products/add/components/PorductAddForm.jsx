@@ -5,9 +5,9 @@ const PorductAddForm = () => {
         e.preventDefault();
         const from = e.target;
         // console.log('wow')
-        const product = from.productName.value;
+        const productName = from.productName.value;
         // console.log(product);
-        const payload={product}
+        const payload={productName}
         const res = await fetch('http://localhost:3000/api/items',{
             method : 'POST',
             body:JSON.stringify(payload),
@@ -16,7 +16,9 @@ const PorductAddForm = () => {
             }
         })
         const result = res.json();
-        console.log(result)
+        from.reset();
+        alert('post submitted')
+        // console.log(result)
 
 
     }
