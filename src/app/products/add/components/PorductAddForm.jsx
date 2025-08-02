@@ -1,6 +1,10 @@
 'use client'
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 const PorductAddForm = () => {
+    const router = useRouter();
+    // eita must next navigation theke export korte hobe 
     const handleSubmit =async(e) => {
         e.preventDefault();
         const from = e.target;
@@ -17,7 +21,8 @@ const PorductAddForm = () => {
         })
         const result = res.json();
         from.reset();
-        alert('post submitted')
+        // alert('post submitted')
+        router.push('/products')
         // console.log(result)
 
 
