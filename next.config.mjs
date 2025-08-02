@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig =  {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -7,6 +7,17 @@ const nextConfig =  {
         hostname: 'www.themealdb.com',
       },
     ],
+  },
+  // code from how to handle redirect in next.js 
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: '/products/add',
+        destination: '/',
+        permanent: true,
+      },
+    ]
   },
 };
 
