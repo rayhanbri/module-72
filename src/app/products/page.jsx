@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 const page = async () => {
@@ -8,6 +9,10 @@ const page = async () => {
         //eta korle server network req kome jai 
     });
     const data = await res.json();
+    if(data.data.length > 3){
+        redirect('/')
+        // etao next navigation theke import kora lagbhe 
+    }
     console.log(data)
 
     return (
